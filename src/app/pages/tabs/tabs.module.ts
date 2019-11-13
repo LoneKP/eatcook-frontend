@@ -21,6 +21,10 @@ const routes: Routes = [
         path: "meals",
         loadChildren: "../meals/meals.module#MealsPageModule"
       },
+      {
+        path: "meals/:id",
+        loadChildren: "../meals/meal/meal.module#MealPageModule"
+      },
       { path: "cook", loadChildren: "../cook/cook.module#CookPageModule" },
       {
         path: "profile",

@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let meal of meals">
+  <ion-card *ngFor="let meal of meals" (click)="openMealInTab(meal.id)">
     <ion-card-header>
       <ion-card-title color="primary">{{ meal.name }}</ion-card-title>
       <ion-card-subtitle color="primary">Vesterbro</ion-card-subtitle>

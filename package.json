@@ -27,8 +27,10 @@
     "@ionic/storage": "^2.2.0",
     "cordova-sqlite-storage": "^3.4.0",
     "core-js": "^2.5.4",
+    "ng-tags-input": "^3.2.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
+    "ui-select": "^0.19.8",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

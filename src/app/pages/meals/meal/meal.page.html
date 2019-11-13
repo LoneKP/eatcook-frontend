@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>meal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="meals"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Book Meal</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-img
+    src="https://fluidideas.s3-eu-west-1.amazonaws.com/caba/s3fs-public/styles/article_image/public/Article-image---wellness-plate_0.jpg?kjQK.GibI0ouMDE5bV1ANbbQpc5L5c8L&itok=Ab2ESlBd"
+  ></ion-img>
+  <ion-list *ngIf="meal">
+    <ion-item lines="none">
+      <ion-icon name="time" slot="start"></ion-icon>
+      <ion-datetime
+        displayFormat="DD/MM/YYYY HH:mm"
+        value="{{ meal.pickup_time }}"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <p>{{ meal.name }}</p>
+        <p>{{ meal.amount }} meals offered</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
+  <ion-button (click)="onClick()" fill="solid" shape="round" type="submit">
+    Book meal
+  </ion-button>
 </ion-content>

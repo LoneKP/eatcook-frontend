@@ -4,4 +4,80 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <form [formGroup]="mealsForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Name of your meal</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="Floating">Information about content</ion-label>
+      <ion-select formControlName="information" multiple="true">
+        <ion-select-option value="Gluten free">Gluten free</ion-select-option>
+        <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
+        <ion-select-option value="Vegan">Vegan</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"
+        >When can people pick up your meal?</ion-label
+      >
+      <ion-datetime
+        formControlName="date"
+        displayFormat="DDDD MMM D, YYYY"
+        placeholder="Select Date"
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">At what time?</ion-label>
+      <ion-datetime
+        formControlName="time"
+        displayFormat="HH:mm A"
+        placeholder="Select Time"
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Address</ion-label>
+      <ion-input
+        formControlName="address"
+        placeholder="Address Line 1"
+      ></ion-input>
+      <ion-input formControlName="zip" placeholder="Zip Code"></ion-input>
+      <ion-input formControlName="city" placeholder="City"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="Floating">Number of meals available</ion-label>
+      <ion-select formControlName="number_of_meals">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Will you provide packaging? </ion-label>
+      <ion-toggle formControlName="packaging" slot="end" [(ngModel)]="true"></ion-toggle>></ion-toggle>
+    </ion-item>
+
+    <ion-button block color="primary" type="submit">
+      Give away meals
+    </ion-button>
+  </form>
+</ion-content>
