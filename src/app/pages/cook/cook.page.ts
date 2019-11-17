@@ -30,13 +30,13 @@ export class CookPage implements OnInit {
       zip: [""],
       city: [""],
       number_of_meals: [""],
-      packaging: [""]
+      packaging: [false]
     });
   }
 
   onSubmit() {
-    // this.createMeal(this.mealsForm.value);
-    console.log(this.mealsForm.value);
+    this.createMeal(this.mealsForm.value);
+    // console.log(this.mealsForm.value);
   }
 
   createMeal(data) {

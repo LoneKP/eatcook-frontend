@@ -73,7 +73,12 @@
 
     <ion-item>
       <ion-label>Will you provide packaging? </ion-label>
-      <ion-toggle formControlName="packaging" slot="end" [(ngModel)]="true"></ion-toggle>></ion-toggle>
+      <ion-toggle
+        checked="false"
+        value="false"
+        formControlName="packaging"
+        slot="end"
+      ></ion-toggle>
     </ion-item>
 
     <ion-button block color="primary" type="submit">
