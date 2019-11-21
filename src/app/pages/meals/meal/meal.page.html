@@ -19,11 +19,26 @@
         value="{{ meal.pickup_time }}"
       ></ion-datetime>
     </ion-item>
-    <ion-item lines="none">
-      <ion-label>
-        <p>{{ meal.name }}</p>
-        <p>{{ meal.amount }} meals offered</p>
-      </ion-label>
+    <ion-item padding lines="none">
+      <ion-text>
+        <h1>{{ meal.name }}</h1>
+        <p>{{ meal.description }}</p>
+
+        <ion-chip *ngFor="let tag of tags" color="primary">
+          <ion-label>{{ tag }}</ion-label>
+        </ion-chip>
+
+        <p>{{ meal.address }}</p>
+        <p>{{ meal.zip }} {{ meal.city }}</p>
+        <p></p>
+        <p *ngIf="!meal.cook_provides_packaging">
+          You need to bring your own packaging for the food
+        </p>
+        <p *ngIf="meal.cook_provides_packaging">
+          The cook will provide packaging for you meal
+        </p>
+        <p>{{ meal.amount }} meals left</p>
+      </ion-text>
     </ion-item>
   </ion-list>
 

@@ -18,12 +18,16 @@
 
     <ion-item>
       <ion-label position="Floating">Information about content</ion-label>
-      <ion-select formControlName="information" multiple="true">
+      <ion-select formControlName="tags" multiple="true">
         <ion-select-option value="Gluten free">Gluten free</ion-select-option>
         <ion-select-option value="Vegetarian">Vegetarian</ion-select-option>
         <ion-select-option value="Vegan">Vegan</ion-select-option>
       </ion-select>
     </ion-item>
+
+    <!-- <ion-item>
+
+    </ion-item> -->
 
     <ion-item>
       <ion-label position="floating"
@@ -34,9 +38,6 @@
         displayFormat="DDDD MMM D, YYYY"
         placeholder="Select Date"
       ></ion-datetime>
-    </ion-item>
-
-    <ion-item>
       <ion-label position="floating">At what time?</ion-label>
       <ion-datetime
         formControlName="time"

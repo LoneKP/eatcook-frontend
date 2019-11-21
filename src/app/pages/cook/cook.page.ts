@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class CookPage implements OnInit {
   mealsForm: FormGroup;
   url = environment.url;
+  minDate = new Date();
 
   constructor(
     public http: HttpClient,
@@ -20,10 +21,11 @@ export class CookPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(this.minDate);
     this.mealsForm = this.formBuilder.group({
       name: [""],
       description: [""],
-      information: [""],
+      tags: [""],
       date: [""],
       time: [""],
       address: [""],

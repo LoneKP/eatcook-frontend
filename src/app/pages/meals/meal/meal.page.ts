@@ -10,6 +10,7 @@ import { environment } from "../../../../environments/environment";
   styleUrls: ["./meal.page.scss"]
 })
 export class MealPage implements OnInit {
+  tags: any;
   meal = null;
   id = null;
   url = environment.url;
@@ -33,6 +34,11 @@ export class MealPage implements OnInit {
   getMeal(id) {
     this.http.get(`${this.url}/meals/` + id).subscribe(result => {
       this.meal = result;
+      this.tags = this.meal["tags"];
     });
   }
+
+  // openBookPage(id) {
+  //   this.router.navigateByUrl("/app/meals/" + id);
+  // }
 }
