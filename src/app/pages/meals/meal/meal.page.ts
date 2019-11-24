@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-import { AuthService } from "../../../services/auth.service";
 import { environment } from "../../../../environments/environment";
+import { ModalController } from "@ionic/angular";
+import { BookPage } from "../../book/book.page";
 
 @Component({
   selector: "app-meal",
@@ -18,9 +19,19 @@ export class MealPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     public http: HttpClient,
-    authService: AuthService
+    public modalController: ModalController
   ) {
     this.meal = [];
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: BookPage,
+      componentProps: {
+        meal: this.meal
+      }
+    });
+    return await modal.present();
   }
 
   ngOnInit() {
@@ -37,8 +48,4 @@ export class MealPage implements OnInit {
       this.tags = this.meal["tags"];
     });
   }
-
-  // openBookPage(id) {
-  //   this.router.navigateByUrl("/app/meals/" + id);
-  // }
 }

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Account details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-list>
+    <ion-list-header>
+      Personal info
+    </ion-list-header>
+    <ion-item routerLink="/app/profile/edit/name">
+      <ion-label>Name</ion-label>
+      <ion-note color="medium">{{user.name}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-note color="medium">{{user.email}}</ion-note>
+      <ion-icon color="medium" name="arrow-forward"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Phone number</ion-label>
+      <ion-note color="medium">{{user.phone_number}}</ion-note>
+      <ion-icon color="medium" name="arrow-forward"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-note color="medium">My address</ion-note>
+      <ion-icon color="medium" name="arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

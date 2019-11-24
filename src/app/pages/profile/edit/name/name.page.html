@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit name</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="nameField" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input formControlName="name" value="{{user.name}}"></ion-input>
+      <ion-button type="submit">
+        Update
+      </ion-button>
+    </ion-item>
+  </form>
+</ion-content>

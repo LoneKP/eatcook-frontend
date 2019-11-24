@@ -24,6 +24,16 @@ export class ApiRequestsService {
       })
     );
   }
+
+  update(path, data) {
+    return this.http.post(`${this.url}` + path, data).pipe(
+      catchError(e => {
+        this.showAlert(e.error.msg);
+        throw new Error(e);
+      })
+    );
+  }
+
   showAlert(msg) {
     let alert = this.alertController.create({
       message: msg,

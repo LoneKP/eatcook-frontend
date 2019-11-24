@@ -21,7 +21,6 @@ export class CookPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.minDate);
     this.mealsForm = this.formBuilder.group({
       name: [""],
       description: [""],

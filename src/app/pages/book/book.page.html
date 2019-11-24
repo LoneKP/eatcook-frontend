@@ -1,16 +1,12 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="meals"></ion-back-button>
+    <ion-title>This is what you're booking</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
     </ion-buttons>
-    <ion-title>Book Meal</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-img
-    src="https://fluidideas.s3-eu-west-1.amazonaws.com/caba/s3fs-public/styles/article_image/public/Article-image---wellness-plate_0.jpg?kjQK.GibI0ouMDE5bV1ANbbQpc5L5c8L&itok=Ab2ESlBd"
-  ></ion-img>
   <ion-list *ngIf="meal">
     <ion-item lines="none">
       <ion-icon name="time" slot="start"></ion-icon>
@@ -41,13 +37,22 @@
       </ion-text>
     </ion-item>
   </ion-list>
-
-  <ion-button
-    (click)="presentModal(meal.id)"
-    fill="solid"
-    shape="round"
-    type="submit"
-  >
-    Book meal
-  </ion-button>
+  <form [formGroup]="mealsOrderForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="none">
+      <ion-icon (click)="subtractValue()" name="remove-circle"></ion-icon>
+      <ion-input
+        formControlName="orderAmount"
+        type="number"
+        min="1"
+        max="{{meal.amount}}"
+        value="{{ orderAmount }}"
+        readonly="true"
+      ></ion-input>
+      <ion-icon (click)="addValue()" name="add-circle"></ion-icon>
+    </ion-item>
+    <ion-button margin expand="block" color="primary" type="submit">
+      Book
+    </ion-button>
+  </form>
 </ion-content>
+<ion-footer> </ion-footer>

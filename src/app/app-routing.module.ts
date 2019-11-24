@@ -5,7 +5,15 @@ import { Routes, RouterModule } from "@angular/router";
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "login", loadChildren: "./pages/login/login.module#LoginPageModule" },
-  { path: "app", loadChildren: "./pages/tabs/tabs.module#TabsPageModule" }
+  { path: "app", loadChildren: "./pages/tabs/tabs.module#TabsPageModule" },
+  {
+    path: "app/profile/info",
+    loadChildren: "../profile/info/info.module#InfoPageModule"
+  },
+  {
+    path: "app/profile/edit/name",
+    loadChildren: "./pages/profile/edit/name/name.module#NamePageModule"
+  }
 ];
 
 @NgModule({
