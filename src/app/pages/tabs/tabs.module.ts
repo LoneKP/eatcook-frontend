@@ -29,6 +29,10 @@ const routes: Routes = [
       {
         path: "profile",
         loadChildren: "../profile/profile.module#ProfilePageModule"
+      },
+      {
+        path: "profile/handouts/:id",
+        loadChildren: "../profile/handouts/handouts.module#HandoutsPageModule"
       }
     ]
   }

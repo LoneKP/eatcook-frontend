@@ -68,6 +68,10 @@ export class ProfilePage implements OnInit {
       });
   }
 
+  openMealHandoutList(id) {
+    this.router.navigateByUrl("/app/profile/handouts/" + id);
+  }
+
   getUserPastOrders() {
     this.http
       .get(`${this.url}/user/orders/past`)

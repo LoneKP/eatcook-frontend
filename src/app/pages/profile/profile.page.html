@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header translucent="true" no-border>
   <ion-toolbar>
     <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item lines="none" padding-top padding-bottom>
+  <ion-item color="primary" lines="none" padding-top padding-bottom>
     <ion-avatar slot="start">
       <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
     </ion-avatar>
@@ -31,7 +31,10 @@
     <ion-list-header color="primary">
       <ion-label>Your upcoming meal handouts</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let userFutureMeal of userFutureMeals">
+    <ion-item
+      (click)="openMealHandoutList(userFutureMeal.id)"
+      *ngFor="let userFutureMeal of userFutureMeals"
+    >
       <ion-label>{{ userFutureMeal.name }}</ion-label>
     </ion-item>
   </ion-list>

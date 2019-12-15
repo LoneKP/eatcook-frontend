@@ -1,10 +1,10 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header translucent="true" no-border>
+  <ion-toolbar [class.show-background]="showToolbar">
     <ion-title>Cook</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen (ionScroll)="onScroll($event)" [scrollEvents]="true">
   <form [formGroup]="mealsForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Name of your meal</ion-label>
@@ -82,7 +82,12 @@
       ></ion-toggle>
     </ion-item>
 
-    <ion-button block color="primary" type="submit">
+    <ion-button
+      block
+      color="primary"
+      type="submit"
+      [routerLink]="['/app/profile']"
+    >
       Give away meals
     </ion-button>
   </form>

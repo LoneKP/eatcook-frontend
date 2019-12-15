@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { ApiRequestsService } from "../../services/api-requests.service";
 import { environment } from "../../../environments/environment";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ScrollDetail } from "@ionic/core";
 
 @Component({
   selector: "app-cook",
@@ -13,12 +14,20 @@ export class CookPage implements OnInit {
   mealsForm: FormGroup;
   url = environment.url;
   minDate = new Date();
+  showToolbar = false;
 
   constructor(
     public http: HttpClient,
     private ApiRequestsService: ApiRequestsService,
     private formBuilder: FormBuilder
   ) {}
+
+  onScroll($event: CustomEvent<ScrollDetail>) {
+    if ($event && $event.detail && $event.detail.scrollTop) {
+      const scrollTop = $event.detail.scrollTop;
+      this.showToolbar = scrollTop >= 1;
+    }
+  }
 
   ngOnInit() {
     this.mealsForm = this.formBuilder.group({

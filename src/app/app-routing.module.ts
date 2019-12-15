@@ -8,11 +8,15 @@ const routes: Routes = [
   { path: "app", loadChildren: "./pages/tabs/tabs.module#TabsPageModule" },
   {
     path: "app/profile/info",
-    loadChildren: "../profile/info/info.module#InfoPageModule"
+    loadChildren: "./pages/profile/info/info.module#InfoPageModule"
   },
   {
     path: "app/profile/edit/name",
     loadChildren: "./pages/profile/edit/name/name.module#NamePageModule"
+  },
+  {
+    path: "email",
+    loadChildren: "./pages/profile/edit/email/email.module#EmailPageModule"
   }
 ];
 
