@@ -75,20 +75,13 @@
     </ion-item>
   </ion-list>
 
-  <ion-row>
-    <ion-col></ion-col>
-    <ion-col>
-      <ion-button
-        (click)="presentModal(meal.id)"
-        fill="solid"
-        shape="round"
-        type="submit"
-        padding="none"
-        margin="none"
-      >
-        Book meal
-      </ion-button>
-    </ion-col>
-    <ion-col></ion-col>
-  </ion-row>
+  <ion-button
+    (click)="presentModal(meal.id)"
+    fill="solid"
+    type="submit"
+    expand="block"
+    margin-left
+  >
+    Book meal
+  </ion-button>
 </ion-content>

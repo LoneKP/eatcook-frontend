@@ -29,6 +29,7 @@ export class MealPage implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: BookPage,
+      cssClass: "custom-modal-css",
       componentProps: {
         meal: this.meal
       }

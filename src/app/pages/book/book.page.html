@@ -1,65 +1,79 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>This is what you're booking</ion-title>
+    <ion-title>Book</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content color="light">
   <ion-list *ngIf="meal">
+    <ion-list-header>Pickup information</ion-list-header>
     <ion-item lines="none">
-      <ion-icon name="time" slot="start"></ion-icon>
-      <ion-datetime
-        displayFormat="DD/MM/YYYY HH:mm"
-        value="{{ meal.pickup_time }}"
-      ></ion-datetime>
-    </ion-item>
-    <ion-item padding lines="none">
-      <ion-text>
-        <h1>{{ meal.name }}</h1>
-        <p>{{ meal.description }}</p>
-
-        <ion-chip *ngFor="let tag of tags" color="primary">
-          <ion-label>{{ tag }}</ion-label>
-        </ion-chip>
-
+      <ion-icon name="location-outline" slot="start"> </ion-icon>
+      <ion-label class="ion-text-wrap">
         <p>{{ meal.address }}</p>
         <p>{{ meal.zip }} {{ meal.city }}</p>
-        <p></p>
-        <p *ngIf="!meal.cook_provides_packaging">
-          You need to bring your own packaging for the food
-        </p>
-        <p *ngIf="meal.cook_provides_packaging">
-          The cook will provide packaging for you meal
-        </p>
-        <p>{{ meal.amount }} meals left</p>
-      </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="time-outline"></ion-icon>
+      <ion-datetime
+        value="{{meal.pickup_time}}"
+        display-format="DD.MM.YYYY HH:mm"
+      >
+      </ion-datetime>
+    </ion-item>
+    <ion-item padding>
+      <p>{{ meal.amount }} meals left</p>
     </ion-item>
   </ion-list>
-  <form [formGroup]="mealsOrderForm" (ngSubmit)="onSubmit()">
-    <ion-item lines="none">
-      <ion-icon (click)="subtractValue()" name="remove-circle"></ion-icon>
-      <ion-input
-        formControlName="orderAmount"
-        type="number"
-        min="1"
-        max="{{meal.amount}}"
-        value="{{ orderAmount }}"
-        readonly="true"
-      ></ion-input>
-      <ion-icon (click)="addValue()" name="add-circle"></ion-icon>
+  <ion-list>
+    <form [formGroup]="mealsOrderForm" (ngSubmit)="onSubmit()">
+      <ion-row class="ion-align-items-center" lines="none">
+        <ion-col class="ion-text-center">
+          <ion-icon
+            class="add-and-subtract-icons"
+            (click)="subtractValue()"
+            name="remove-circle"
+          ></ion-icon>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-input
+            class="bigger-font-size"
+            formControlName="orderAmount"
+            type="number"
+            min="1"
+            max="{{meal.amount}}"
+            value="{{ orderAmount }}"
+            readonly="true"
+          ></ion-input>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-icon
+            class="add-and-subtract-icons"
+            (click)="addValue()"
+            name="add-circle"
+          ></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-button
+        margin
+        expand="block"
+        color="primary"
+        type="submit"
+        [routerLink]="['/app/profile']"
+        (click)="dismiss()"
+      >
+        Book
+      </ion-button>
+    </form>
+    <ion-item margin>
+      <p class="smaller-font-size">
+        By booking you are stating that you will drop by to pick up the meals at
+        the time and address specified.
+      </p>
     </ion-item>
-    <ion-button
-      margin
-      expand="block"
-      color="primary"
-      type="submit"
-      [routerLink]="['/app/profile']"
-      (click)="dismiss()"
-    >
-      Book
-    </ion-button>
-  </form>
+  </ion-list>
 </ion-content>
-<ion-footer> </ion-footer>
+<ion-footer></ion-footer>
