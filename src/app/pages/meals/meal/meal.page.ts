@@ -12,7 +12,9 @@ import { BookPage } from "../../book/book.page";
 })
 export class MealPage implements OnInit {
   tags: any;
+  user: any;
   meal = null;
+  mealImage = null;
   id = null;
   url = environment.url;
 
@@ -45,7 +47,9 @@ export class MealPage implements OnInit {
   getMeal(id) {
     this.http.get(`${this.url}/meals/` + id).subscribe(result => {
       this.meal = result;
+      console.log(this.meal);
       this.tags = this.meal["tags"];
+      this.user = this.meal["user"];
     });
   }
 }

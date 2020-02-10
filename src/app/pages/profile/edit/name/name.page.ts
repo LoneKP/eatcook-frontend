@@ -30,6 +30,8 @@ export class NamePage implements OnInit {
     this.getUser();
   }
 
+  ionViewWillEnter() {}
+
   onSubmit() {
     this.updateUser(this.nameField.value);
     // console.log(this.nameField.value);

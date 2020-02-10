@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content fullscreen (ionScroll)="onScroll($event)" [scrollEvents]="true">
-  <form [formGroup]="mealsForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="mealsForm" (ngSubmit)="onSubmit(getFile)">
     <ion-item>
       <ion-label position="floating">Name of your meal</ion-label>
       <ion-input formControlName="name"></ion-input>
@@ -14,6 +14,16 @@
     <ion-item>
       <ion-label position="floating">Description</ion-label>
       <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Upload image</ion-label>
+      <ion-input
+        #getFile
+        type="file"
+        accept="image/*"
+        id="image-input"
+      ></ion-input>
     </ion-item>
 
     <ion-item>

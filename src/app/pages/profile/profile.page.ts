@@ -38,13 +38,15 @@ export class ProfilePage implements OnInit {
     console.log(this.userFutureOrders);
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getUser();
     this.getUserPastOrders();
     this.getUserFutureOrders();
     this.getUserPastMeals();
     this.getUserFutureMeals();
   }
+
+  ngOnInit() {}
 
   getUser() {
     this.http.get(`${this.url}/user`).subscribe((user: any) => {
@@ -70,6 +72,10 @@ export class ProfilePage implements OnInit {
 
   openMealHandoutList(id) {
     this.router.navigateByUrl("/app/profile/handouts/" + id);
+  }
+
+  openMealPickupList(id) {
+    this.router.navigateByUrl("/app/profile/pickups/" + id);
   }
 
   getUserPastOrders() {

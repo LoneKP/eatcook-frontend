@@ -34,6 +34,12 @@ export class ApiRequestsService {
     );
   }
 
+  uploadImage(file, path) {
+    const formData = new FormData();
+    formData.append("file", file);
+    return this.http.post<any>(`${this.url}` + path, formData);
+  }
+
   showAlert(msg) {
     let alert = this.alertController.create({
       message: msg,

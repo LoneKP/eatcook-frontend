@@ -10,16 +10,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="meal" fullscreen>
-  <ion-img
-    src="https://fluidideas.s3-eu-west-1.amazonaws.com/caba/s3fs-public/styles/article_image/public/Article-image---wellness-plate_0.jpg?kjQK.GibI0ouMDE5bV1ANbbQpc5L5c8L&itok=Ab2ESlBd"
-  ></ion-img>
-  <ion-item-group>
-    <ion-item lines="none">
-      <h1>{{meal.name}}</h1>
+<ion-content color="light" *ngIf="meal">
+  <img class="meal-image" src="{{ meal.meal_image_url }}" />
+  <ion-list>
+    <ion-list-header>Information about your meal</ion-list-header>
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        {{meal.name}}
+      </ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Pickup time:</ion-label>
+      <ion-label>Pickup time</ion-label>
 
       <ion-datetime
         displayFormat="DD/MM/YYYY HH:mm"
@@ -28,21 +29,23 @@
       </ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label *ngIf="meal.cook_provides_packaging"
-        >You will provide packaging</ion-label
-      >
-      <ion-label *ngIf="!meal.cook_provides_packaging"
-        >Eaters will bring their own packaging</ion-label
-      >
+      <ion-label>Packaging provided by</ion-label>
+
+      <p *ngIf="!meal.cook_provides_packaging">
+        Eater
+      </p>
+      <p *ngIf="meal.cook_provides_packaging">
+        You
+      </p>
     </ion-item>
-  </ion-item-group>
+  </ion-list>
 
   <ion-list>
-    <ion-list-header>Meal handouts: </ion-list-header>
+    <ion-list-header>Orders</ion-list-header>
     <ion-item *ngIf="handouts.length==0">
-      <ion-label>There are no handouts yet!</ion-label>
+      <ion-label>No orders yet!</ion-label>
     </ion-item>
-    <ion-item *ngFor="let handout of handouts" color="light">
+    <ion-item *ngFor="let handout of handouts">
       <ion-avatar slot="start">
         <img
           src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
@@ -50,11 +53,14 @@
       </ion-avatar>
       <ion-label>
         <h2>{{ handout.user.name }}</h2>
+        <p>{{ handout.amount }} meals</p>
       </ion-label>
-      <ion-badge>
-        {{ handout.amount }} meals
-      </ion-badge>
+      <ion-checkbox></ion-checkbox>
     </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Remaining meals</ion-list-header>
     <ion-item>
       <ion-label>Available meals for handout</ion-label>
       <ion-badge slot="end">{{meal.amount}}</ion-badge>

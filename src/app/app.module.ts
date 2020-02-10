@@ -14,12 +14,20 @@ import { Storage, IonicStorageModule } from "@ionic/storage";
 import { JwtModule, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { BookPageModule } from "./pages/book/book.module";
 
+import { Camera } from "@ionic-native/Camera/ngx";
+import { File } from "@ionic-native/File/ngx";
+import { WebView } from "@ionic-native/ionic-webview/ngx";
+
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
       return storage.get("access_token");
     },
-    whitelistedDomains: ["localhost:3000"]
+    whitelistedDomains: [
+      "eatcook-api.herokuapp.com",
+      "localhost:3000",
+      "192.168.0.113:3000"
+    ]
   };
 }
 
@@ -44,7 +52,10 @@ export function jwtOptionsFactory(storage) {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera,
+    File,
+    WebView
   ],
   bootstrap: [AppComponent]
 })

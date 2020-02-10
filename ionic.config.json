@@ -1,7 +1,8 @@
 {
   "name": "eatcook-frontend",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   url: "http://localhost:3000"
+  // url: "https://eatcook-api.herokuapp.com"
+  // url: "0.0.0.0:3030"
 };
 
 /*

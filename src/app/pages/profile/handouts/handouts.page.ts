@@ -17,7 +17,10 @@ export class HandoutsPage implements OnInit {
     this.handouts = [];
     this.meal = [];
   }
-  ngOnInit() {
+
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     let id = this.activatedRoute.snapshot.paramMap.get("id");
     this.getHandout(id);
     this.getMeal(id);

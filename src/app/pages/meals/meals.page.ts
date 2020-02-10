@@ -20,7 +20,7 @@ export class MealsPage {
     this.meals = [];
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getMeals();
   }
 
